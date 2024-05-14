@@ -13,5 +13,6 @@ jobs:
       - name: Lint
         uses: wearerequired/lint-action@v2.3.0
         with:
+          auto_fix: false
           dotnet_format: true
           dotnet_format_args: pirates.sln
