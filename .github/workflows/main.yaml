@@ -4,5 +4,7 @@ jobs:
   dotnet:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@latest
       - name: Lint Action
         uses: wearerequired/lint-action@v2.3.0
