@@ -16,5 +16,7 @@
 *.meta
 *.png
 *.prefab
+*.scenetemplate
 *.unity
 *.xcf
+*~
