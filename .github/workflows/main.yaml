@@ -14,3 +14,4 @@ jobs:
         uses: wearerequired/lint-action@v2.3.0
         with:
           dotnet_format: true
+          workspace: pirates.sln
