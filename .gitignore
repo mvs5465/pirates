@@ -1,0 +1,24 @@
+# Directories
+/.vscode
+/Library
+/Logs
+/Packages
+/ProjectSettings
+/Temp
+/UIElementsSchema
+/UserSettings
+
+# File Types
+*.DS_Store
+*.asset
+*.csproj
+*.kra
+*.mat
+*.meta
+*.png
+*.prefab
+*.scenetemplate
+*.sln
+*.unity
+*.xcf
+*~
