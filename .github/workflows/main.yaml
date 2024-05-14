@@ -17,4 +17,4 @@ jobs:
         with:
           auto_fix: false
           dotnet_format: true
-          dotnet_format_args: analyzers pirates.sln --verify-no-changes
+          dotnet_format_args: pirates.sln --verify-no-changes
