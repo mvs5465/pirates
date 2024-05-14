@@ -7,18 +7,22 @@
 /Temp
 /UIElementsSchema
 /UserSettings
+/Assets/Animations
+/Assets/Prefabs
+/Assets/Scenes
+/Assets/Settings
+/Assets/Sprites
+/Assets/UIToolkit
 
 # File Types
 *.DS_Store
 *.asset
-*.csproj
 *.kra
 *.mat
 *.meta
 *.png
 *.prefab
 *.scenetemplate
-*.sln
 *.unity
 *.xcf
 *~

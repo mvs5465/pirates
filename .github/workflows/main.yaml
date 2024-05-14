@@ -1,0 +1,20 @@
+on:
+  pull_request:
+
+permissions: write-all
+jobs:
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Lint
+        uses: wearerequired/lint-action@v2.3.0
+        with:
+          auto_fix: false
+          dotnet_format: true
+          dotnet_format_args: analyzers pirates.sln --verify-no-changes

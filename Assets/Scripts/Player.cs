@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Action GiveFish;
-    public static Action<int> GiveWood;
-    public static Action<int> GiveFood;
+    readonly public static Action GiveFish;
+    readonly public static Action<int> GiveWood;
+    readonly public static Action<int> GiveFood;
 
     private readonly float MaxSpeed = 4;
     private int health = 5;
