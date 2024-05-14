@@ -9,4 +9,4 @@ jobs:
       - name: Lint Action
         uses: wearerequired/lint-action@v2.3.0
         with:
-          dotnet-format: true
+          dotnet_format: true
