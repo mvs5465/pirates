@@ -1,10 +1,13 @@
 on:
   pull_request:
 jobs:
-- name: Run .NET Code Analysis
-  uses: dotnet/code-analysis@v1
-  id: code-analysis
-  with:
-    solution: pirates.sln
-    build-breaking: true
-    all-categories: all
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run .NET Code Analysis
+        uses: dotnet/code-analysis@v1
+        id: code-analysis
+        with:
+          solution: pirates.sln
+          build-breaking: true
+          all-categories: all
