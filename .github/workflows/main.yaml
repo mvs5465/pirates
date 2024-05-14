@@ -1,5 +1,7 @@
 on:
   pull_request:
+
+permissions: write-all
 jobs:
   dotnet:
     runs-on: ubuntu-latest
@@ -13,6 +15,6 @@ jobs:
       - name: Lint
         uses: wearerequired/lint-action@v2.3.0
         with:
-          dotnet_format_auto_fix: false
+          auto_fix: false
           dotnet_format: true
           dotnet_format_args: pirates.sln
