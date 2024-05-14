@@ -7,6 +7,12 @@
 /Temp
 /UIElementsSchema
 /UserSettings
+/Assets/Animations
+/Assets/Prefabs
+/Assets/Scenes
+/Assets/Settings
+/Assets/Sprites
+/Assets/UIToolkit
 
 # File Types
 *.DS_Store
