@@ -8,7 +8,7 @@ public class AIController
     private int timerReset;
     private Vector3 moveDirection;
 
-    public AI_Controller(GameObject target, float maxSpeed)
+    public AIController(GameObject target, float maxSpeed)
     {
         rb = target.GetComponent<Rigidbody2D>();
         if (!rb) rb = target.AddComponent<Rigidbody2D>();
