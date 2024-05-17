@@ -51,8 +51,7 @@ public class UIController : MonoBehaviour
 
         DrawHealthWidget(uiDocument);
         DrawFoodWidget(uiDocument);
-        DrawFishWidget(uiDocument);
-        DrawWoodWidget(uiDocument);
+        DrawInventoryWidget(uiDocument);
         if (shouldDrawNodeMenu) DrawControllerNodeWidget(uiDocument);
     }
 
@@ -84,7 +83,7 @@ public class UIController : MonoBehaviour
         widget.style.top = 20;
         widget.style.left = 0;
 
-        for (int i = 0; i < FindObjectOfType<Player>().GetHunger(); i++)
+        for (int i = 0; i < FindObjectOfType<Player>().GetFood(); i++)
         {
             Image image = new();
             image.style.height = 12;
@@ -95,52 +94,31 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void DrawFishWidget(UIDocument uiDocument)
+    private void DrawInventoryWidget(UIDocument uiDocument)
     {
-        VisualElement fishWidget = new();
-        uiDocument.rootVisualElement.Add(fishWidget);
-        fishWidget.style.flexDirection = FlexDirection.Row;
-        fishWidget.style.position = Position.Absolute;
-        fishWidget.style.top = 40;
-        fishWidget.style.left = 0;
+        VisualElement widget = new();
+        widget.style.flexDirection = FlexDirection.Row;
+        widget.style.position = Position.Absolute;
+        widget.style.top = 40;
+        widget.style.left = 0;
+        uiDocument.rootVisualElement.Add(widget);
 
-        Image fishImage = new();
-        fishImage.style.height = 12;
-        fishImage.style.width = 12;
-        fishImage.style.marginTop = fishImage.style.marginLeft = 3;
-        fishImage.sprite = fishSprite;
-        fishWidget.Add(fishImage);
+        foreach (Item item in PlayerInventory.GetItemList())
+        {
+            Image image = new();
+            image.style.height = 12;
+            image.style.width = 12;
+            image.style.marginTop = image.style.marginLeft = 3;
+            image.sprite = item.Sprite;
+            widget.Add(image);
 
-        Label fishCount = new();
-        fishCount.text = string.Format("{0}", FindObjectOfType<Player>().GetFishCount());
-        fishCount.style.fontSize = 9;
-        fishCount.style.color = Color.white;
-        fishCount.style.marginTop = fishImage.style.marginLeft = 3;
-        fishWidget.Add(fishCount);
-    }
-
-    private void DrawWoodWidget(UIDocument uiDocument)
-    {
-        VisualElement woodWidget = new();
-        uiDocument.rootVisualElement.Add(woodWidget);
-        woodWidget.style.flexDirection = FlexDirection.Row;
-        woodWidget.style.position = Position.Absolute;
-        woodWidget.style.top = 55;
-        woodWidget.style.left = 0;
-
-        Image woodImage = new();
-        woodImage.style.height = 12;
-        woodImage.style.width = 12;
-        woodImage.style.marginTop = woodImage.style.marginLeft = 3;
-        woodImage.sprite = woodSprite;
-        woodWidget.Add(woodImage);
-
-        Label woodCount = new();
-        woodCount.text = string.Format("{0}", FindObjectOfType<Player>().GetWoodCount());
-        woodCount.style.fontSize = 9;
-        woodCount.style.color = Color.white;
-        woodCount.style.marginTop = woodImage.style.marginLeft = 3;
-        woodWidget.Add(woodCount);
+            Label name = new();
+            name.style.fontSize = 9;
+            name.style.color = Color.white;
+            name.style.marginTop = name.style.marginLeft = 3;
+            name.text = string.Format("{0}", item.ItemName);
+            widget.Add(name);
+        }
     }
 
     private void DrawControllerNodeWidget(UIDocument uiDocument)
@@ -158,7 +136,7 @@ public class UIController : MonoBehaviour
         button.style.fontSize = 9;
         button.style.marginTop = button.style.marginLeft = 3;
         string displayText;
-        if (FindObjectOfType<Player>().GetWoodCount() >= 2)
+        if (UnityEngine.Random.Range(2, 3) >= 2)
         {
             displayText = "Planter  -  2 Wood";
             button.style.color = Color.white;

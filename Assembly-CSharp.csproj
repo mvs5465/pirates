@@ -64,31 +64,36 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.19f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/DayNightCycle.cs" />
-    <Compile Include="Assets/Scripts/Skelly.cs" />
-    <Compile Include="Assets/Scripts/AIController.cs" />
-    <Compile Include="Assets/Scripts/ToolBelt.cs" />
-    <Compile Include="Assets/Scripts/MovementController.cs" />
-    <Compile Include="Assets/Scripts/Waves.cs" />
-    <Compile Include="Assets/Scripts/SkellySword.cs" />
-    <Compile Include="Assets/Scripts/UIController.cs" />
-    <Compile Include="Assets/Scripts/PlanterNode.cs" />
-    <Compile Include="Assets/Scripts/Torch.cs" />
-    <Compile Include="Assets/Scripts/SpriteAnimator.cs" />
-    <Compile Include="Assets/Scripts/Tool.cs" />
-    <Compile Include="Assets/Scripts/InteractableNode.cs" />
-    <Compile Include="Assets/Scripts/SpriteAnimationData.cs" />
-    <Compile Include="Assets/Scripts/Sailor.cs" />
-    <Compile Include="Assets/Scripts/FishingRod.cs" />
-    <Compile Include="Assets/Scripts/ShipNode.cs" />
-    <Compile Include="Assets/Scripts/SkellySpawner.cs" />
-    <Compile Include="Assets/Scripts/Utility.cs" />
-    <Compile Include="Assets/Scripts/Player.cs" />
-    <Compile Include="Assets/Scripts/Sword.cs" />
-    <Compile Include="Assets/Scripts/CameraFollower.cs" />
+    <Compile Include="Assets/Scripts/NPC/SkellySword.cs" />
+    <Compile Include="Assets/Scripts/Equipment/FishingLootManager.cs" />
+    <Compile Include="Assets/Scripts/Player/InteractableManager.cs" />
+    <Compile Include="Assets/Scripts/Core/SpriteAnimationData.cs" />
+    <Compile Include="Assets/Scripts/Interactable/ShipNode.cs" />
+    <Compile Include="Assets/Scripts/NPC/Sailor.cs" />
+    <Compile Include="Assets/Scripts/Equipment/Sword.cs" />
+    <Compile Include="Assets/Scripts/Equipment/FishingRod.cs" />
+    <Compile Include="Assets/Scripts/Equipment/Tool.cs" />
+    <Compile Include="Assets/Scripts/Core/CameraFollower.cs" />
+    <Compile Include="Assets/Scripts/Level/Waves.cs" />
+    <Compile Include="Assets/Scripts/Player/InteractableNode.cs" />
+    <Compile Include="Assets/Scripts/Equipment/FishingLoot.cs" />
+    <Compile Include="Assets/Scripts/Level/DayNightCycle.cs" />
+    <Compile Include="Assets/Scripts/Equipment/Torch.cs" />
+    <Compile Include="Assets/Scripts/Core/Utility.cs" />
+    <Compile Include="Assets/Scripts/Player/Player.cs" />
+    <Compile Include="Assets/Scripts/NPC/SkellySpawner.cs" />
+    <Compile Include="Assets/Scripts/Interactable/PlanterNode.cs" />
+    <Compile Include="Assets/Scripts/NPC/Skelly.cs" />
+    <Compile Include="Assets/Scripts/Item.cs" />
+    <Compile Include="Assets/Scripts/Player/PlayerInventory.cs" />
+    <Compile Include="Assets/Scripts/Player/MovementController.cs" />
+    <Compile Include="Assets/Scripts/UI/UIController.cs" />
+    <Compile Include="Assets/Scripts/Equipment/ToolBelt.cs" />
+    <Compile Include="Assets/Scripts/Core/SpriteAnimator.cs" />
+    <Compile Include="Assets/Scripts/NPC/AIController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets/Scripts/UI.uxml" />
+    <None Include="Assets/Scripts/UI/UI.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

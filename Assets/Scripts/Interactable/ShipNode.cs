@@ -21,7 +21,7 @@ public class ShipNode : InteractableNode
     {
         GameObject planterNodeObj = Instantiate(planterNodePrefab, transform.position, Quaternion.identity);
         planterNodeObj.transform.parent = transform.parent;
-        Player.GiveWood(-2);
+        // TODO: remove items from player inventory
         Destroy(gameObject);
         CancelInvoke();
     }
