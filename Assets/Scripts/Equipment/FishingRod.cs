@@ -47,15 +47,7 @@ public class FishingRod : Tool
         {
             if (bobbing)
             {
-                if (Random.Range(0, 2) == 0)
-                {
-                    Player.GiveFish();
-                }
-                else
-                {
-                    Player.GiveWood(1);
-                }
-
+                PlayerInventory.GiveItem(FishingLootManager.GetRandomItem());
             }
             CancelInvoke();
             Destroy(deployedBobber);
@@ -89,7 +81,8 @@ public class FishingRod : Tool
         Destroy(deployedBobber.GetComponent<Light2D>());
     }
 
-    public override void Shutdown() {
+    public override void Shutdown()
+    {
         CancelInvoke();
         Destroy(deployedBobber);
         Destroy(gameObject);
