@@ -4,7 +4,7 @@ using UnityEngine;
 public class ShipNode : InteractableNode
 {
     public GameObject planterNodePrefab;
-    private Action BuyPlanterNode;
+    public static Action BuyPlanterNode;
 
     void Awake()
     {
@@ -28,13 +28,13 @@ public class ShipNode : InteractableNode
 
     public override void Interact()
     {
-        UIController.EnableControllerMenu(true, BuyPlanterNode);
+        UIController.EnableControllerMenu(true);
         UIController.NotifyRedraw();
     }
 
     public override void Cancel()
     {
-        UIController.EnableControllerMenu(false, null);
+        UIController.EnableControllerMenu(false);
         UIController.NotifyRedraw();
     }
 }
