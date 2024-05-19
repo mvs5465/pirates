@@ -29,8 +29,8 @@ public class ShipNode : InteractableNode
     public override void Interact()
     {
         UIController.EnableControllerMenu(true);
-        UIController.NotifyR edraw();
-    
+        UIController.NotifyRedraw();
+    }
 
     public override void Cancel()
     {
