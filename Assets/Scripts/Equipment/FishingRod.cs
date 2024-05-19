@@ -47,7 +47,7 @@ public class FishingRod : Tool
         {
             if (bobbing)
             {
-                PlayerInventory.GiveItem(FishingLootManager.GetRandomItem());
+                PlayerInventory.GiveItem(FishingLootManager.GetRandomItem(), 1);
             }
             CancelInvoke();
             Destroy(deployedBobber);

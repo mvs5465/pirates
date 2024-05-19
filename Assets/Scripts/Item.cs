@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Item
@@ -9,5 +10,15 @@ public class Item
     {
         ItemName = name;
         Sprite = sprite;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(ItemName, Sprite);
+    }
+
+        public override bool Equals(object other)
+    {
+        return other is Item otherItem && ItemName == otherItem.ItemName && Sprite == otherItem.Sprite;
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -6,7 +8,7 @@ using Image = UnityEngine.UIElements.Image;
 
 public class UIController : MonoBehaviour
 {
-    public static Action<bool, Action> EnableControllerMenu;
+    public static Action<bool> EnableControllerMenu;
     public static Action NotifyRedraw;
 
     public PanelSettings panelSettings;
@@ -17,7 +19,6 @@ public class UIController : MonoBehaviour
     public Sprite hungerSprite;
 
     private bool shouldDrawNodeMenu = false;
-    private Action controllerMenuEvent;
     private GameObject uiContainer;
     private Camera mainCamera;
 
@@ -33,10 +34,9 @@ public class UIController : MonoBehaviour
         Draw();
     }
 
-    private void ShowControllerMenu(bool shouldDraw, Action clickEvent)
+    private void ShowControllerMenu(bool shouldDraw)
     {
         shouldDrawNodeMenu = shouldDraw;
-        controllerMenuEvent = clickEvent;
     }
 
     private void Draw()
@@ -97,27 +97,33 @@ public class UIController : MonoBehaviour
     private void DrawInventoryWidget(UIDocument uiDocument)
     {
         VisualElement widget = new();
-        widget.style.flexDirection = FlexDirection.Row;
+        widget.style.flexDirection = FlexDirection.Column;
         widget.style.position = Position.Absolute;
         widget.style.top = 40;
         widget.style.left = 0;
         uiDocument.rootVisualElement.Add(widget);
 
-        foreach (Item item in PlayerInventory.GetItemList())
+        foreach (KeyValuePair<Item, int> itemValuePair in PlayerInventory.GetItemList())
         {
+
+            VisualElement itemWidget = new();
+            itemWidget.style.flexDirection = FlexDirection.Row;
+            widget.Add(itemWidget);
+
             Image image = new();
             image.style.height = 12;
             image.style.width = 12;
             image.style.marginTop = image.style.marginLeft = 3;
-            image.sprite = item.Sprite;
-            widget.Add(image);
+            image.sprite = itemValuePair.Key.Sprite;
+            itemWidget.Add(image);
 
             Label name = new();
             name.style.fontSize = 9;
             name.style.color = Color.white;
-            name.style.marginTop = name.style.marginLeft = 3;
-            name.text = string.Format("{0}", item.ItemName);
-            widget.Add(name);
+            name.style.marginTop = 0;
+            name.style.marginLeft = 3;
+            name.text = string.Format("{0}", itemValuePair.Value);
+            itemWidget.Add(name);
         }
     }
 
@@ -136,11 +142,28 @@ public class UIController : MonoBehaviour
         button.style.fontSize = 9;
         button.style.marginTop = button.style.marginLeft = 3;
         string displayText;
-        if (UnityEngine.Random.Range(2, 3) >= 2)
+
+        bool canAfford = false;
+        Item itemWeWant = null;
+        foreach (KeyValuePair<Item, int> itemValuePair in PlayerInventory.GetItemList())
+        {
+            if (itemValuePair.Key.ItemName.Equals("Wood") && itemValuePair.Value >= 2)
+            {
+                itemWeWant = itemValuePair.Key;
+                canAfford = true;
+            }
+        }
+        if (canAfford)
         {
             displayText = "Planter  -  2 Wood";
             button.style.color = Color.white;
-            button.clicked += controllerMenuEvent;
+
+            static void purchaseItem() { }
+            {
+                PlayerInventory.GiveItem(itemWeWant, -2);
+                ShipNode.BuyPlanterNode();
+            }
+            button.clicked += purchaseItem;
         }
         else
         {

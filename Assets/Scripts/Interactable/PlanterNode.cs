@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class PlanterNode : InteractableNode
 {
+    public static Func<bool> CurrentlyActive;
     public List<Sprite> frames;
     private readonly int phaseTime = 10;
 
@@ -25,10 +27,6 @@ public class PlanterNode : InteractableNode
             Player.GiveFood(4);
             gameObject.GetComponent<SpriteRenderer>().sprite = frames.First();
         }
-    }
-    public override void Cancel()
-    {
-        // Debug.Log("Left planter range!");
     }
 
     private void Grow()
